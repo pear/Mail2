@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
- <name>Mail</name>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Mail2</name>
  <channel>pear.php.net</channel>
  <summary>Class that provides multiple interfaces for sending emails</summary>
  <description>PEAR&apos;s Mail package defines an interface for implementing mailers under the PEAR hierarchy.  It also provides supporting functions useful to multiple mailer backends.  Currently supported backends include: PHP&apos;s native mail() function, sendmail, and SMTP.  This package also provides a RFC822 email address list validation utility class.</description>
@@ -22,21 +22,21 @@
   <email>alec@alec.pl</email>
   <active>yes</active>
  </developer>
- <date>2014-01-01</date>
- <time>00:00:00</time>
+ <date>2014-06-04</date>
+ <time>13:10:43</time>
  <version>
-  <release>1.2.1</release>
-  <api>1.2.0</api>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
  </version>
  <stability>
-  <release>stable</release>
-  <api>stable</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
 Request #17888: Reduce peak memory usage when using the smtp/smtpmx backend [alec]
 
-Fixed Bug #18109: New "pipelining" parameter for SMTP backend never used [alec]
+Fixed Bug #18109: New &quot;pipelining&quot; parameter for SMTP backend never used [alec]
 Fixed Bug #17317: Invalid periods in mailbox not marked as invalid [alec]
 Fixed Bug #17388: Deprecated assigning the return value of new by reference [alec]
 Fixed Bug #17866: Non-static method Mail_RFC822::parseAddressList called statically [alec]
@@ -44,27 +44,30 @@ Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="1aaa32cd73663461471b7c664bf1ddbb" name="Mail/mail.php" role="php" />
-   <file baseinstalldir="/" md5sum="b518286839921f8f0e6ee520374cc973" name="Mail/mock.php" role="php" />
-   <file baseinstalldir="/" md5sum="5f21af8a5d846e844ac7e525bcf2d8be" name="Mail/null.php" role="php" />
-   <file baseinstalldir="/" md5sum="2afca6e3415490de821b280b1e2cb0a6" name="Mail/RFC822.php" role="php" />
-   <file baseinstalldir="/" md5sum="b206391834f425f9a934b8f702b1847a" name="Mail/sendmail.php" role="php" />
-   <file baseinstalldir="/" md5sum="479aa21ec86e63e629db646ed292b142" name="Mail/smtp.php" role="php" />
-   <file baseinstalldir="/" md5sum="74e13bbc352601c9529c21e1e18f5b69" name="Mail/smtpmx.php" role="php" />
-   <file baseinstalldir="/" md5sum="89a692e0ae0ccc1a012559e5ea4d8a58" name="Mail.php" role="php" />
+   <file baseinstalldir="/" md5sum="a315042c356b2c764c4365b7ab708acf" name="Mail/mail.php" role="php" />
+   <file baseinstalldir="/" md5sum="01328e28518a87bf7094b369263bbbf5" name="Mail/mock.php" role="php" />
+   <file baseinstalldir="/" md5sum="ccd8fd5f52f15024403b11b58ca835f5" name="Mail/null.php" role="php" />
+   <file baseinstalldir="/" md5sum="3771da2248f3d0af62a1d8e6c7e3e50a" name="Mail/RFC822.php" role="php" />
+   <file baseinstalldir="/" md5sum="1099b8f858d6161eedaa889ce291c72a" name="Mail/sendmail.php" role="php" />
+   <file baseinstalldir="/" md5sum="1e3b0e38233f527f0176c627f40f9687" name="Mail/smtp.php" role="php" />
+   <file baseinstalldir="/" md5sum="838c03df9c265a53ba40375be82d1a49" name="Mail/smtpmx.php" role="php" />
    <file baseinstalldir="/" md5sum="d66aa2a2f0bfe33f8a67d749a1a4d345" name="tests/9137.phpt" role="test" />
    <file baseinstalldir="/" md5sum="75d10361f686f1cc16637a9364e3eab7" name="tests/9137_2.phpt" role="test" />
    <file baseinstalldir="/" md5sum="3659ceda2b94b66892869fa1ca12ada1" name="tests/13659.phpt" role="test" />
    <file baseinstalldir="/" md5sum="e99f00d8f07232e0f129dd77ae9699c7" name="tests/bug17178.phpt" role="test" />
    <file baseinstalldir="/" md5sum="c2036980390981cd6b89c1e5c903913e" name="tests/bug17317.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="09f4ca2e0c846e93fa2f242c0c4b2c63" name="tests/Makefile" role="test" />
    <file baseinstalldir="/" md5sum="bbd88a5dfb0536a8c66ba07a1fbda382" name="tests/rfc822.phpt" role="test" />
    <file baseinstalldir="/" md5sum="48a2349660b104b77ad9c42daac809c8" name="tests/smtp_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fa4c53e482ff0c7af2bcbaffb090320c" name="tests/validateQuotedString.php" role="test" />
+   <file baseinstalldir="/" md5sum="bb11152a8a93f3c5f4d2288f7ea5d028" name="composer.json" role="data" />
+   <file baseinstalldir="/" md5sum="f067a14fc10abc114ff157255bfc2895" name="Mail.php" role="php" />
   </dir>
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>4.4.9</min>
+    <min>5.0.0</min>
    </php>
    <pearinstaller>
     <min>1.5.6</min>
@@ -82,88 +85,23 @@ Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-
  <changelog>
   <release>
    <version>
-    <release>1.2.0b2</release>
-    <api>1.2.0</api>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
    </version>
    <stability>
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2009-05-15</date>
-   <license>PHP/BSD</license>
-   <notes>
-Bug #16200 - Security hole allow to read/write Arbitrary File
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>1.2.0b3</release>
-    <api>1.2.0</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2010-02-08</date>
-   <license>PHP/BSD</license>
-   <notes>
-QA Release. Bug #16200 - Security hole allow to read/write Arbitrary File
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>1.2.0b4</release>
-    <api>1.2.0</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2010-02-08</date>
+   <date>2014-06-04</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
-Doc Bug #15620 Licence change to BSD
-Bug #13659 Mail parse error in special condition
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>1.2.0b5</release>
-    <api>1.2.0</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2010-02-09</date>
-   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
-   <notes>
-QA release.
-Updated minimum dependencies (Net_SMTP, PEAR, PHP)
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>1.2.0</release>
-    <api>1.2.0</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2010-03-01</date>
-   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
-   <notes>
-QA release - stable.
+Request #17888: Reduce peak memory usage when using the smtp/smtpmx backend [alec]
 
-Updated minimum dependencies (Net_SMTP, PEAR, PHP)
-Doc Bug #15620 Licence change to BSD
-Bug #13659 Mail parse error in special condition
-Bug #16200 - Security hole allow to read/write Arbitrary File
-_hasUnclosedQuotes() doesn&apos;t properly handle a double slash before an end quote (slusarz@curecanti.org, Bug #9137).
-Make sure Net_SMTP is defined when calling getSMTPObject() directly (slusarz@curecanti.org, Bug #13772).
-Add addServiceExtensionParameter() to the SMTP driver (slusarz@curecanti.org, Bug #13764).
-Add a method to obtain the Net_SMTP object from the SMTP driver (slusarz@curecanti.org, Bug #13766).
+Fixed Bug #18109: New &quot;pipelining&quot; parameter for SMTP backend never used [alec]
+Fixed Bug #17317: Invalid periods in mailbox not marked as invalid [alec]
+Fixed Bug #17388: Deprecated assigning the return value of new by reference [alec]
+Fixed Bug #17866: Non-static method Mail_RFC822::parseAddressList called statically [alec]
+Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-group syntax [alec]
    </notes>
   </release>
  </changelog>
