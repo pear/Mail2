@@ -272,7 +272,9 @@ class Mail2_smtp extends Mail2 {
                 $params .= ' ' . $key . (is_null($val) ? '' : '=' . $val);
             }
         }
-        if (PEAR::isError($res = $this->_smtp->mailFrom($from, ltrim($params)))) {
+        $res = $this->_smtp->mailFrom($from, ltrim($params));
+
+        if (is_a($res, "PEAR_Error")) {
             $error = $this->_error("Failed to set sender: $from", $res);
             $this->_smtp->rset();
             throw new Mail2_Exception($error, self::SMTP_ERROR_SENDER);
@@ -350,7 +352,8 @@ class Mail2_smtp extends Mail2 {
         }
 
         /* Attempt to connect to the configured SMTP server. */
-        if (PEAR::isError($res = $this->_smtp->connect($this->timeout))) {
+        $res = $this->_smtp->connect($this->timeout);
+        if (is_a($res, "PEAR_Error")) {
             $error = $this->_error('Failed to connect to ' .
                                    $this->host . ':' . $this->port,
                                    $res);
