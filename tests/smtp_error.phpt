@@ -4,18 +4,18 @@ Mail: SMTP Error Reporting
 <?php
 
 require_once 'PEAR/Registry.php';
-$registry = &new PEAR_Registry();
+$registry = new PEAR_Registry();
 
 if (!$registry->packageExists('Net_SMTP')) die("skip\n");
 --FILE--
 <?php
-require_once 'Mail.php';
+require_once 'Mail2.php';
 
 /* Reference a bogus SMTP server address to guarantee a connection failure. */
 $params = array('host' => 'bogus.host.tld');
 
 /* Create our SMTP-based mailer object. */
-$mailer = &Mail::factory('smtp', $params);
+$mailer = Mail2::factory('smtp', $params);
 
 /* Attempt to send an empty message in order to trigger an error. */
 $e = $mailer->send(array(), array(), '');

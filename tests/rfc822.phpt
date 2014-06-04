@@ -1,10 +1,10 @@
 --TEST--
-Mail_RFC822: Address Parsing
+Mail2_RFC822: Address Parsing
 --FILE--
 <?php
-require_once 'Mail/RFC822.php';
+require_once 'Mail2/RFC822.php';
 
-$parser = &new Mail_RFC822();
+$parser = new Mail2_RFC822();
 
 /* A simple, bare address. */
 $address = 'user@example.com';
