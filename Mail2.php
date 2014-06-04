@@ -2,7 +2,7 @@
 /**
  *  PEAR's Mail:: interface.
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
