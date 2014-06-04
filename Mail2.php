@@ -73,8 +73,8 @@ class Mail2
     public static function factory($driver, $params = array())
     {
         $driver = strtolower($driver);
-        @include_once 'Mail/' . $driver . '.php';
-        $class = 'Mail_' . $driver;
+        include_once 'Mail2/' . $driver . '.php';
+        $class = 'Mail2_' . $driver;
         if (class_exists($class)) {
             $mailer = new $class($params);
             return $mailer;
