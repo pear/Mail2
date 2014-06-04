@@ -53,7 +53,6 @@ require_once 'Net/SMTP.php';
  * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP class.
  *
  *
- * @access public
  * @author  gERD Schaufelberger <gerd@php-tools.net>
  * @package Mail
  * @version $Revision$
@@ -64,9 +63,8 @@ class Mail2_smtpmx extends Mail2 {
      * SMTP connection object.
      *
      * @var object
-     * @access private
      */
-    var $_smtp = null;
+    protected $_smtp = null;
 
     /**
      * The port the SMTP server is on.
@@ -206,12 +204,11 @@ class Mail2_smtpmx extends Mail2 {
      * If a parameter is present in the $params array, it replaces the
      * default.
      *
-     * @access public
      * @param array Hash containing any parameters different from the
      *              defaults.
      * @see _Mail_smtpmx()
      */
-    function __construct($params)
+    public function __construct($params)
     {
         if (isset($params['mailname'])) {
             $this->mailname = $params['mailname'];
@@ -238,19 +235,6 @@ class Mail2_smtpmx extends Mail2 {
     }
 
     /**
-     * Constructor wrapper for PHP4
-     *
-     * @access public
-     * @param array Hash containing any parameters different from the defaults
-     * @see __construct()
-     */
-    function Mail_smtpmx($params)
-    {
-        $this->__construct($params);
-        register_shutdown_function(array(&$this, '__destruct'));
-    }
-
-    /**
      * Destructor implementation to ensure that we disconnect from any
      * potentially-alive persistent SMTP connections.
      */
@@ -265,13 +249,12 @@ class Mail2_smtpmx extends Mail2 {
     /**
      * Implements Mail::send() function using SMTP direct delivery
      *
-     * @access public
      * @param mixed $recipients in RFC822 style or array
      * @param array $headers The array of headers to send with the mail.
      * @param string $body The full text of the message body,
      * @return mixed Returns true on success, or a PEAR_Error
      */
-    function send($recipients, $headers, $body)
+    public function send($recipients, $headers, $body)
     {
         if (!is_array($headers)) {
             return PEAR::raiseError('$headers must be an array');
@@ -404,11 +387,10 @@ class Mail2_smtpmx extends Mail2 {
      *
      * The MX records
      *
-     * @access private
      * @param string $host mail host
      * @return mixed sorted
      */
-    function _getMx($host)
+    protected function _getMx($host)
     {
         $mx = array();
 
@@ -447,10 +429,9 @@ class Mail2_smtpmx extends Mail2 {
     /**
      * initialize PEAR:Net_DNS_Resolver
      *
-     * @access private
      * @return boolean true on success
      */
-    function _loadNetDns()
+    protected function _loadNetDns()
     {
         if (is_object($this->resolver)) {
             return true;
@@ -473,12 +454,11 @@ class Mail2_smtpmx extends Mail2 {
      *
      * include additional information in error message
      *
-     * @access private
      * @param string $id maps error ids to codes and message
      * @param array $info optional information in associative array
      * @see _errorCode
      */
-    function _raiseError($id, $info = array())
+    protected function _raiseError($id, $info = array())
     {
         $code = $this->errorCode[$id]['code'];
         $msg = $this->errorCode[$id]['msg'];

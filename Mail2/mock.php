@@ -45,8 +45,7 @@
 
 /**
  * Mock implementation of the PEAR Mail:: interface for testing.
- * @access public
- * @package Mail
+  * @package Mail
  * @version $Revision$
  */
 class Mail2_mock extends Mail2 {
@@ -55,7 +54,6 @@ class Mail2_mock extends Mail2 {
      * Array of messages that have been sent with the mock.
      *
      * @var array
-     * @access public
      */
     var $sentMessages = array();
 
@@ -119,9 +117,8 @@ class Mail2_mock extends Mail2 {
      * @return mixed Returns true on success, or a PEAR_Error
      *               containing a descriptive error message on
      *               failure.
-     * @access public
      */
-    function send($recipients, $headers, $body)
+    public function send($recipients, $headers, $body)
     {
         if ($this->_preSendCallback) {
             call_user_func_array($this->_preSendCallback,

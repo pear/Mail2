@@ -109,10 +109,8 @@ class Mail2_mail extends Mail2 {
      * @return mixed Returns true on success, or a PEAR_Error
      *               containing a descriptive error message on
      *               failure.
-     *
-     * @access public
      */
-    function send($recipients, $headers, $body)
+    public function send($recipients, $headers, $body)
     {
         if (!is_array($headers)) {
             return PEAR::raiseError('$headers must be an array');

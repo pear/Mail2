@@ -45,7 +45,6 @@
 
 /**
  * Null implementation of the PEAR Mail:: interface.
- * @access public
  * @package Mail
  * @version $Revision$
  */
