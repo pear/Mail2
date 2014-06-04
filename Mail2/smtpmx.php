@@ -4,7 +4,7 @@
 /**
  * SMTP MX
  *
- * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP class.
+ * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP2 class.
  *
  * PHP version 5
  *
@@ -47,10 +47,10 @@
  * @link       http://pear.php.net/package/Mail/
  */
 
-require_once 'Net/SMTP.php';
+require_once 'Net/SMTP2.php';
 
 /**
- * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP class.
+ * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP2 class.
  *
  *
  * @author  gERD Schaufelberger <gerd@php-tools.net>
@@ -126,7 +126,7 @@ class Mail2_smtpmx extends Mail2 {
     var $test = false;
 
     /**
-     * Turn on Net_SMTP debugging?
+     * Turn on Net_SMTP2 debugging?
      *
      * @var boolean $peardebug
      */
@@ -171,7 +171,7 @@ class Mail2_smtpmx extends Mail2 {
         ),
         'send_data' => array(
             'code'  => 7,
-            'msg'   => 'Failed to create Net_SMTP object.'
+            'msg'   => 'Failed to create Net_SMTP2 object.'
         ),
         'no_mx' => array(
             'code'  => 8,
@@ -297,7 +297,7 @@ class Mail2_smtpmx extends Mail2 {
 
             $connected = false;
             foreach ($mx as $mserver => $mpriority) {
-                $this->_smtp = new Net_SMTP($mserver, $this->port, $this->mailname);
+                $this->_smtp = new Net_SMTP2($mserver, $this->port, $this->mailname);
 
                 // configure the SMTP connection.
                 if ($this->debug) {

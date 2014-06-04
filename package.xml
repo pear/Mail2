@@ -78,9 +78,8 @@ Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-
   </required>
   <optional>
    <package>
-    <name>Net_SMTP</name>
+    <name>Net_SMTP2</name>
     <channel>pear.php.net</channel>
-    <min>1.4.1</min>
    </package>
   </optional>
  </dependencies>

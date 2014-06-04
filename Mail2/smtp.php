@@ -1,6 +1,6 @@
 <?php
 /**
- * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP class.
+ * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP2 class.
  *
  * PHP version 5
  *
@@ -45,13 +45,13 @@
  */
 
 /**
- * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP class.
+ * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP2 class.
  * @package Mail
  * @version $Revision$
  */
 class Mail2_smtp extends Mail2 {
 
-    /** Error: Failed to create a Net_SMTP object */
+    /** Error: Failed to create a Net_SMTP2 object */
     const SMTP_ERROR_CREATE = 10000;
 
     /** Error: Failed to connect to SMTP server */
@@ -80,7 +80,7 @@ class Mail2_smtp extends Mail2 {
     protected $_smtp = null;
 
     /**
-     * The list of service extension parameters to pass to the Net_SMTP
+     * The list of service extension parameters to pass to the Net_SMTP2
      * mailFrom() command.
      * @var array
      */
@@ -104,7 +104,7 @@ class Mail2_smtp extends Mail2 {
      * This value may be set to true, false or the name of a specific
      * authentication method.
      *
-     * If the value is set to true, the Net_SMTP package will attempt to use
+     * If the value is set to true, the Net_SMTP2 package will attempt to use
      * the best authentication method advertised by the remote SMTP server.
      *
      * @var mixed
@@ -139,7 +139,7 @@ class Mail2_smtp extends Mail2 {
     var $timeout = null;
 
     /**
-     * Turn on Net_SMTP debugging?
+     * Turn on Net_SMTP2 debugging?
      *
      * @var boolean $debug
      */
@@ -156,7 +156,7 @@ class Mail2_smtp extends Mail2 {
     /**
      * Use SMTP command pipelining (specified in RFC 2920) if the SMTP server
      * supports it. This speeds up delivery over high-latency connections. By
-     * default, use the default value supplied by Net_SMTP.
+     * default, use the default value supplied by Net_SMTP2.
      * @var bool
      */
     var $pipelining;
@@ -318,9 +318,9 @@ class Mail2_smtp extends Mail2 {
     }
 
     /**
-     * Connect to the SMTP server by instantiating a Net_SMTP object.
+     * Connect to the SMTP server by instantiating a Net_SMTP2 object.
      *
-     * @return mixed Returns a reference to the Net_SMTP object on success, or
+     * @return mixed Returns a reference to the Net_SMTP2 object on success, or
      *               a PEAR_Error containing a descriptive error message on
      *               failure.
      *
@@ -332,19 +332,13 @@ class Mail2_smtp extends Mail2 {
             return $this->_smtp;
         }
 
-        include_once 'Net/SMTP.php';
-        $this->_smtp = new Net_SMTP($this->host,
+        include_once 'Net/SMTP2.php';
+        $this->_smtp = new Net_SMTP2($this->host,
                                      $this->port,
                                      $this->localhost,
                                      $this->pipelining,
                                      0,
                                      $this->socket_options);
-
-        /* If we still don't have an SMTP object at this point, fail. */
-        if (is_object($this->_smtp) === false) {
-            throw new Mail2_Exception('Failed to create a Net_SMTP object',
-                                    self::SMTP_ERROR_CREATE);
-        }
 
         /* Configure the SMTP connection. */
         if ($this->debug) {
