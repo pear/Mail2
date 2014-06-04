@@ -43,7 +43,6 @@
  * @link        http://pear.php.net/package/Mail/
  */
 
-require_once 'PEAR.php';
 require_once 'Mail2/Exception.php';
 
 /**
@@ -68,7 +67,7 @@ class Mail2
      *
      * @param string $driver The kind of Mail:: object to instantiate.
      * @param array  $params The parameters to pass to the Mail:: object.
-     * @return object Mail a instance of the driver class or if fails a PEAR Error
+     * @return object Mail a instance of the driver class
      */
     public static function factory($driver, $params = array())
     {
@@ -103,9 +102,7 @@ class Mail2
      * @param string $body The full text of the message body, including any
      *               Mime parts, etc.
      *
-     * @return mixed Returns true on success, or a PEAR_Error
-     *               containing a descriptive error message on
-     *               failure.
+     * @return mixed Returns true on success
      *
      * @deprecated use Mail_mail::send instead
      */
@@ -229,8 +226,7 @@ class Mail2
      *              (RFC822 compliant), or an array of recipients,
      *              each RFC822 valid.
      *
-     * @return mixed An array of forward paths (bare addresses) or a PEAR_Error
-     *               object if the address list could not be parsed.
+     * @return array An array of forward paths (bare addresses)
      */
     protected function parseRecipients($recipients)
     {
