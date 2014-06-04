@@ -2,7 +2,7 @@
 /**
  * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP class.
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -71,7 +71,7 @@ define('PEAR_MAIL_SMTP_ERROR_DATA', 10006);
  * @package Mail
  * @version $Revision$
  */
-class Mail_smtp extends Mail {
+class Mail2_smtp extends Mail2 {
 
     /**
      * SMTP connection object.
@@ -190,7 +190,7 @@ class Mail_smtp extends Mail {
      *              defaults.
      * @access public
      */
-    function Mail_smtp($params)
+    public function __construct($params)
     {
         if (isset($params['host'])) $this->host = $params['host'];
         if (isset($params['port'])) $this->port = $params['port'];

@@ -6,7 +6,7 @@
  *
  * SMTP MX implementation of the PEAR Mail interface. Requires the Net_SMTP class.
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -58,7 +58,7 @@ require_once 'Net/SMTP.php';
  * @package Mail
  * @version $Revision$
  */
-class Mail_smtpmx extends Mail {
+class Mail2_smtpmx extends Mail2 {
 
     /**
      * SMTP connection object.

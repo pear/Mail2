@@ -2,7 +2,7 @@
 /**
  * internal PHP-mail() implementation of the PEAR Mail:: interface.
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -48,7 +48,7 @@
  * @package Mail
  * @version $Revision$
  */
-class Mail_mail extends Mail {
+class Mail2_mail extends Mail2 {
 
     /**
      * Any arguments to pass to the mail() function.
@@ -64,7 +64,7 @@ class Mail_mail extends Mail {
      *
      * @param array $params Extra arguments for the mail() function.
      */
-    function Mail_mail($params = null)
+    public function __construct($params = array())
     {
         // The other mail implementations accept parameters as arrays.
         // In the interest of being consistent, explode an array into

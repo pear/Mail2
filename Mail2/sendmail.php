@@ -1,7 +1,7 @@
 <?php
 //
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP Version 5                                                        |
 // +----------------------------------------------------------------------+
 // | Copyright (c) 1997-2003 The PHP Group                                |
 // +----------------------------------------------------------------------+
@@ -22,7 +22,7 @@
  * @package Mail
  * @version $Revision$
  */
-class Mail_sendmail extends Mail {
+class Mail2_sendmail extends Mail2 {
 
     /**
      * The location of the sendmail or sendmail wrapper binary on the
@@ -56,7 +56,7 @@ class Mail_sendmail extends Mail {
      *              defaults.
      * @access public
      */
-    function Mail_sendmail($params)
+    public function __construct($params)
     {
         if (isset($params['sendmail_path'])) {
             $this->sendmail_path = $params['sendmail_path'];

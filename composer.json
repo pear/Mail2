@@ -18,18 +18,18 @@
     ],
     "autoload": {
         "psr-0": {
-            "Mail": "./"
+            "Mail2": "./"
         }
     },
-    "description": "More info available on: http://pear.php.net/package/Mail",
+    "description": "More info available on: http://pear.php.net/package/Mail2",
     "include-path": [
         "./"
     ],
     "license": "BSD-2-Clause",
-    "name": "pear/mail",
+    "name": "pear/mail2",
     "support": {
-        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail",
-        "source": "https://github.com/pear/Mail"
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail2",
+        "source": "https://github.com/pear/Mail2"
     },
     "type": "library",
     "require": {
