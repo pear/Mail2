@@ -13,9 +13,9 @@ $mailer = Mail2::factory('smtp', $params);
 /* Attempt to send an empty message in order to trigger an error. */
 try {
     $mailer->send(array(), array(), '');
-} catch (PEAR_Exception $e) {
+} catch (Net_Socket2_Exception $e) {
     $err = $e->getMessage();
-    if (preg_match('/Failed to connect socket:.*/i', $err)) {
+    if (preg_match('/Connection refused/i', $err)) {
         echo "OK";
     } else {
         print_r($e);

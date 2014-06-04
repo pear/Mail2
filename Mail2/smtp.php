@@ -238,9 +238,7 @@ class Mail2_smtp extends Mail2 {
      * @param string $body The full text of the message body, including any
      *               MIME parts, etc.
      *
-     * @return mixed Returns true on success, or a PEAR_Error
-     *               containing a descriptive error message on
-     *               failure.
+     * @return mixed Returns true on success
      */
     public function send($recipients, $headers, $body)
     {
@@ -276,23 +274,12 @@ class Mail2_smtp extends Mail2 {
                 $params .= ' ' . $key . (is_null($val) ? '' : '=' . $val);
             }
         }
-        $res = $this->_smtp->mailFrom($from, ltrim($params));
-
-        if (is_a($res, "PEAR_Error")) {
-            $error = $this->_error("Failed to set sender: $from", $res);
-            $this->_smtp->rset();
-            throw new Mail2_Exception($error, self::SMTP_ERROR_SENDER);
-        }
+        $this->_smtp->mailFrom($from, ltrim($params));
 
         $recipients = $this->parseRecipients($recipients);
 
         foreach ($recipients as $recipient) {
-            $res = $this->_smtp->rcptTo($recipient);
-            if (is_a($res, 'PEAR_Error')) {
-                $error = $this->_error("Failed to add recipient: $recipient", $res);
-                $this->_smtp->rset();
-                throw new Mail2_Exception($error, self::SMTP_ERROR_RECIPIENT);
-            }
+            $this->_smtp->rcptTo($recipient);
         }
 
         /* Send the message's headers and the body as SMTP data. */
@@ -307,12 +294,6 @@ class Mail2_smtp extends Mail2 {
 		 * ideal if we're connecting to a round-robin of relay servers and need to track which exact one took the email */
 		$this->greeting = $this->_smtp->getGreeting();
 
-        if (is_a($res, 'PEAR_Error')) {
-            $error = $this->_error('Failed to send data', $res);
-            $this->_smtp->rset();
-            throw new Mail2_Exception($error, self::SMTP_ERROR_DATA);
-        }
-
         /* If persistent connections are disabled, destroy our SMTP object. */
         if ($this->persist === false) {
             $this->disconnect();
@@ -324,9 +305,7 @@ class Mail2_smtp extends Mail2 {
     /**
      * Connect to the SMTP server by instantiating a Net_SMTP2 object.
      *
-     * @return mixed Returns a reference to the Net_SMTP2 object on success, or
-     *               a PEAR_Error containing a descriptive error message on
-     *               failure.
+     * @return mixed Returns a reference to the Net_SMTP2 object on success
      *
      * @since  1.2.0
      */
@@ -351,29 +330,16 @@ class Mail2_smtp extends Mail2 {
 
         /* Attempt to connect to the configured SMTP server. */
         $res = $this->_smtp->connect($this->timeout);
-        if (is_a($res, "PEAR_Error")) {
-            $error = $this->_error('Failed to connect to ' .
-                                   $this->host . ':' . $this->port,
-                                   $res);
-            throw new Mail2_Exception($error, self::SMTP_ERROR_CONNECT);
-        }
 
         /* Attempt to authenticate if authentication has been enabled. */
         if ($this->auth) {
             $method = is_string($this->auth) ? $this->auth : '';
 
-            $res = $this->_smtp->auth(
+            $this->_smtp->auth(
                 $this->username,
                 $this->password,
                 $method
             );
-
-            if (is_a($res, "PEAR_Error")) {
-                $error = $this->_error("$method authentication failure",
-                                       $res);
-                $this->_smtp->rset();
-                throw new Mail2_Exception($error, self::SMTP_ERROR_AUTH);
-            }
         }
 
         return $this->_smtp;
