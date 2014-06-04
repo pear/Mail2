@@ -44,33 +44,33 @@
  * @link        http://pear.php.net/package/Mail/
  */
 
-/** Error: Failed to create a Net_SMTP object */
-define('PEAR_MAIL_SMTP_ERROR_CREATE', 10000);
-
-/** Error: Failed to connect to SMTP server */
-define('PEAR_MAIL_SMTP_ERROR_CONNECT', 10001);
-
-/** Error: SMTP authentication failure */
-define('PEAR_MAIL_SMTP_ERROR_AUTH', 10002);
-
-/** Error: No From: address has been provided */
-define('PEAR_MAIL_SMTP_ERROR_FROM', 10003);
-
-/** Error: Failed to set sender */
-define('PEAR_MAIL_SMTP_ERROR_SENDER', 10004);
-
-/** Error: Failed to add recipient */
-define('PEAR_MAIL_SMTP_ERROR_RECIPIENT', 10005);
-
-/** Error: Failed to send data */
-define('PEAR_MAIL_SMTP_ERROR_DATA', 10006);
-
 /**
  * SMTP implementation of the PEAR Mail interface. Requires the Net_SMTP class.
  * @package Mail
  * @version $Revision$
  */
 class Mail2_smtp extends Mail2 {
+
+    /** Error: Failed to create a Net_SMTP object */
+    const SMTP_ERROR_CREATE = 10000;
+
+    /** Error: Failed to connect to SMTP server */
+    const SMTP_ERROR_CONNECT = 10001;
+
+    /** Error: SMTP authentication failure */
+    const SMTP_ERROR_AUTH = 10002;
+
+    /** Error: No From: address has been provided */
+    const SMTP_ERROR_FROM = 10003;
+
+    /** Error: Failed to set sender */
+    const SMTP_ERROR_SENDER = 10004;
+
+    /** Error: Failed to add recipient */
+    const SMTP_ERROR_RECIPIENT = 10005;
+
+    /** Error: Failed to send data */
+    const SMTP_ERROR_DATA = 10006;
 
     /**
      * SMTP connection object.
@@ -265,7 +265,7 @@ class Mail2_smtp extends Mail2 {
         if (!isset($from)) {
             $this->_smtp->rset();
             throw new InvalidArgumentException('No From: address has been provided',
-                                    PEAR_MAIL_SMTP_ERROR_FROM);
+                                    self::SMTP_ERROR_FROM);
         }
 
         $params = null;
@@ -277,7 +277,7 @@ class Mail2_smtp extends Mail2 {
         if (PEAR::isError($res = $this->_smtp->mailFrom($from, ltrim($params)))) {
             $error = $this->_error("Failed to set sender: $from", $res);
             $this->_smtp->rset();
-            throw new Mail2_Exception($error, PEAR_MAIL_SMTP_ERROR_SENDER);
+            throw new Mail2_Exception($error, self::SMTP_ERROR_SENDER);
         }
 
         $recipients = $this->parseRecipients($recipients);
@@ -287,7 +287,7 @@ class Mail2_smtp extends Mail2 {
             if (is_a($res, 'PEAR_Error')) {
                 $error = $this->_error("Failed to add recipient: $recipient", $res);
                 $this->_smtp->rset();
-                throw new Mail2_Exception($error, PEAR_MAIL_SMTP_ERROR_RECIPIENT);
+                throw new Mail2_Exception($error, self::SMTP_ERROR_RECIPIENT);
             }
         }
 
@@ -306,7 +306,7 @@ class Mail2_smtp extends Mail2 {
         if (is_a($res, 'PEAR_Error')) {
             $error = $this->_error('Failed to send data', $res);
             $this->_smtp->rset();
-            throw new Mail2_Exception($error, PEAR_MAIL_SMTP_ERROR_DATA);
+            throw new Mail2_Exception($error, self::SMTP_ERROR_DATA);
         }
 
         /* If persistent connections are disabled, destroy our SMTP object. */
@@ -343,7 +343,7 @@ class Mail2_smtp extends Mail2 {
         /* If we still don't have an SMTP object at this point, fail. */
         if (is_object($this->_smtp) === false) {
             throw new Mail2_Exception('Failed to create a Net_SMTP object',
-                                    PEAR_MAIL_SMTP_ERROR_CREATE);
+                                    self::SMTP_ERROR_CREATE);
         }
 
         /* Configure the SMTP connection. */
@@ -356,7 +356,7 @@ class Mail2_smtp extends Mail2 {
             $error = $this->_error('Failed to connect to ' .
                                    $this->host . ':' . $this->port,
                                    $res);
-            throw new Mail2_Exception($error, PEAR_MAIL_SMTP_ERROR_CONNECT);
+            throw new Mail2_Exception($error, self::SMTP_ERROR_CONNECT);
         }
 
         /* Attempt to authenticate if authentication has been enabled. */
@@ -369,7 +369,7 @@ class Mail2_smtp extends Mail2 {
                 $error = $this->_error("$method authentication failure",
                                        $res);
                 $this->_smtp->rset();
-                throw new Mail2_Exception($error, PEAR_MAIL_SMTP_ERROR_AUTH);
+                throw new Mail2_Exception($error, self::SMTP_ERROR_AUTH);
             }
         }
 
