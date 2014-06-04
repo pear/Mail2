@@ -212,7 +212,11 @@ class Mail2_smtp extends Mail2 {
      */
     function __destruct()
     {
-        $this->disconnect();
+        try {
+            $this->disconnect();
+        } catch (PEAR_Exception $e) {
+            // Disgard any Failed to write to socket: not connected in /usr/share/php/Net/SMTP2.php on line 285
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 --TEST--
 Mail2: Bug #20281
+--SKIPIF--
+print 'skip'; // WIP
 --FILE--
 <?php
 require_once 'Mail2.php';
