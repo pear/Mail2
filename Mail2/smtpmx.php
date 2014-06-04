@@ -282,10 +282,6 @@ class Mail2_smtpmx extends Mail2 {
 
         // Prepare recipients
         $recipients = $this->parseRecipients($recipients);
-        if (is_a($recipients, 'PEAR_Error')) {
-            return $recipients;
-        }
-
         foreach ($recipients as $rcpt) {
             list($user, $host) = explode('@', $rcpt);
 

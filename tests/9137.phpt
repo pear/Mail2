@@ -12,18 +12,14 @@ $addresses = array(
     array('name' => 'John "Doe', 'email' => 'test@example.com'),
     array('name' => 'John "Doe\\', 'email' => 'test@example.com'),
 );
-
+$rfc = new Mail2_RFC822();
 for ($i = 0; $i < count($addresses); $i++) {
     // construct the address
     $address = "\"" . addslashes($addresses[$i]['name']) . "\" ".
         "<".$addresses[$i]['email'].">";
 
-    $parsedAddresses = Mail2_RFC822::parseAddressList($address);
-    if (is_a($parsedAddresses, 'PEAR_Error')) {
-        echo $address." :: Failed to validate\n";
-    } else {
-        echo $address." :: Parsed\n";
-    }
+    $parsedAddresses = $rfc->parseAddressList($address);
+    echo $address." :: Parsed\n";
 }
 
 --EXPECT--

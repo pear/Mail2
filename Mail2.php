@@ -70,7 +70,7 @@ class Mail2
      * @param array  $params The parameters to pass to the Mail:: object.
      * @return object Mail a instance of the driver class or if fails a PEAR Error
      */
-    public function factory($driver, $params = array())
+    public static function factory($driver, $params = array())
     {
         $driver = strtolower($driver);
         @include_once 'Mail/' . $driver . '.php';
@@ -247,11 +247,6 @@ class Mail2
         // should already be in the headers.
         $Mail_RFC822 = new Mail_RFC822();
         $addresses = $Mail_RFC822->parseAddressList($recipients, 'localhost', false);
-
-        // If parseAddressList() returned a PEAR_Error object, just return it.
-        if (is_a($addresses, 'PEAR_Error')) {
-            return $addresses;
-        }
 
         $recipients = array();
         if (is_array($addresses)) {

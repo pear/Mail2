@@ -252,10 +252,7 @@ class Mail2_smtp extends Mail2 {
         $this->_sanitizeHeaders($headers);
 
         $headerElements = $this->prepareHeaders($headers);
-        if (is_a($headerElements, 'PEAR_Error')) {
-            $this->_smtp->rset();
-            return $headerElements;
-        }
+
         list($from, $textHeaders) = $headerElements;
 
         /* Since few MTAs are going to allow this header to be forged
@@ -284,10 +281,6 @@ class Mail2_smtp extends Mail2 {
         }
 
         $recipients = $this->parseRecipients($recipients);
-        if (is_a($recipients, 'PEAR_Error')) {
-            $this->_smtp->rset();
-            return $recipients;
-        }
 
         foreach ($recipients as $recipient) {
             $res = $this->_smtp->rcptTo($recipient);
@@ -333,7 +326,7 @@ class Mail2_smtp extends Mail2 {
      *
      * @since  1.2.0
      */
-    public function &getSMTPObject()
+    public function getSMTPObject()
     {
         if (is_object($this->_smtp) !== false) {
             return $this->_smtp;

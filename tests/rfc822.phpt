@@ -20,14 +20,19 @@ print_r($parser->parseAddressList($address, null, true, true));
 
 /* An invalid address with spaces in the local part. */
 $address = '<Jon Parise@php.net>';
-$result = $parser->parseAddressList($address, null, true, true);
-if (is_a($result, 'PEAR_Error')) echo $result->getMessage() . "\n";
+try {
+    $parser->parseAddressList($address, null, true, true);
+} catch (Mail2_Exception $e) {
+    echo $e->getMessage() . "\n";
+}
 
 /* A valid address with an uncommon TLD. */
 $address = 'jon@host.longtld';
-$result = $parser->parseAddressList($address, null, true, true);
-if (is_a($result, 'PEAR_Error')) echo $result->getMessage() . "\n";
-
+try {
+    $parser->parseAddressList($address, null, true, true);
+} catch (Mail2_Exception $e) {
+    echo $e->getMessage() . "\n";
+}
 --EXPECT--
 Array
 (

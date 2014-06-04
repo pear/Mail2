@@ -4,14 +4,15 @@ Mail2_RFC822::parseAddressList invalid periods in mail address
 <?php
 require "Mail2/RFC822.php";
 
-$result[] = Mail2_RFC822::parseAddressList('.name@example.com');
-$result[] = Mail2_RFC822::parseAddressList('name.@example.com');
-$result[] = Mail2_RFC822::parseAddressList('name..name@example.com');
+$rfc = new Mail2_RFC822();
 
-foreach ($result as $r) {
-    if (is_a($r, 'PEAR_Error')) {
-        echo "OK\n";
-    }
+foreach (array('.name@example.com', 'name.@example.com', 'name..name@example.com') as $addr) {
+  try {
+    $rfc->parseAddressList($addr);
+  } catch (Mail2_Exception $e) {
+    echo "OK\n";
+
+  }
 }
 --EXPECT--
 OK

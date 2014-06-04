@@ -5,7 +5,7 @@ Mail2: Test for bug #9137, take 2
 
 require_once dirname(__FILE__) . '/../Mail2/RFC822.php';
 require_once 'PEAR.php';
-
+$rfc = new Mail2_RFC822();
 $addresses = array(
     array('raw' => '"John Doe" <test@example.com>'),
     array('raw' => '"John Doe' . chr(92) . '" <test@example.com>'),
@@ -18,11 +18,11 @@ $addresses = array(
 for ($i = 0; $i < count($addresses); $i++) {
     // construct the address
     $address = $addresses[$i]['raw'];
-    $parsedAddresses = Mail2_RFC822::parseAddressList($address);
-    if (PEAR::isError($parsedAddresses)) {
-        echo $address." :: Failed to validate\n";
-    } else {
+    try {
+        $parsedAddresses = $rfc->parseAddressList($address);
         echo $address." :: Parsed\n";
+    } catch (Mail2_Exception $e) {
+        echo $address." :: Failed to validate\n";
     }
 }
 
