@@ -13,9 +13,9 @@ $mailer = Mail2::factory('smtp', $params);
 /* Attempt to send an empty message in order to trigger an error. */
 try {
     $mailer->send(array(), array(), '');
-} catch (Net_Socket2_Exception $e) {
+} catch (Exception $e) {
     $err = $e->getMessage();
-    if (preg_match('/Connection refused/i', $err)) {
+    if (preg_match('/Name or service not known/i', $err)) {
         echo "OK";
     } else {
         print_r($e);
