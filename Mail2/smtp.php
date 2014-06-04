@@ -204,15 +204,13 @@ class Mail2_smtp extends Mail2 {
         if (isset($params['verp'])) {
             $this->addServiceExtensionParameter('XVERP', is_bool($params['verp']) ? null : $params['verp']);
         }
-
-        register_shutdown_function(array(&$this, '_Mail_smtp'));
     }
 
     /**
      * Destructor implementation to ensure that we disconnect from any
      * potentially-alive persistent SMTP connections.
      */
-    function _Mail_smtp()
+    function __destruct()
     {
         $this->disconnect();
     }
