@@ -364,9 +364,13 @@ class Mail2_smtp extends Mail2 {
         if ($this->auth) {
             $method = is_string($this->auth) ? $this->auth : '';
 
-            if (PEAR::isError($res = $this->_smtp->auth($this->username,
-                                                        $this->password,
-                                                        $method))) {
+            $res = $this->_smtp->auth(
+                $this->username,
+                $this->password,
+                $method
+            );
+
+            if (is_a($res, "PEAR_Error")) {
                 $error = $this->_error("$method authentication failure",
                                        $res);
                 $this->_smtp->rset();

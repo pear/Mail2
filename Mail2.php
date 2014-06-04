@@ -112,7 +112,7 @@ class Mail2
     public function send($recipients, $headers, $body)
     {
         if (!is_array($headers)) {
-            return PEAR::raiseError('$headers must be an array');
+            throw new InvalidArgumentException('$headers must be an array');
         }
 
         $result = $this->_sanitizeHeaders($headers);
