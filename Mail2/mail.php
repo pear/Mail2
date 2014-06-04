@@ -113,7 +113,7 @@ class Mail2_mail extends Mail2 {
     public function send($recipients, $headers, $body)
     {
         if (!is_array($headers)) {
-            return PEAR::raiseError('$headers must be an array');
+            throw new InvalidArgumentException('$headers must be an array');
         }
 
         $result = $this->_sanitizeHeaders($headers);
@@ -157,7 +157,7 @@ class Mail2_mail extends Mail2 {
         // If the mail() function returned failure, we need to create a
         // PEAR_Error object and return it instead of the boolean result.
         if ($result === false) {
-            $result = PEAR::raiseError('mail() returned failure');
+            throw new Mail2_Exception('mail() returned failure');
         }
 
         return $result;

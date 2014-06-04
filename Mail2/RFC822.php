@@ -67,6 +67,8 @@
  * @license BSD
  * @package Mail
  */
+require_once 'Mail2/Exception.php';
+
 class Mail2_RFC822 {
 
     /**
@@ -192,8 +194,7 @@ class Mail2_RFC822 {
         while ($this->address = $this->_splitAddresses($this->address));
 
         if ($this->address === false || isset($this->error)) {
-            require_once 'PEAR.php';
-            return PEAR::raiseError($this->error);
+            throw new Mail2_Exception($this->error);
         }
 
         // Validate each address individually.  If we encounter an invalid
@@ -202,8 +203,7 @@ class Mail2_RFC822 {
             $valid = $this->_validateAddress($address);
 
             if ($valid === false || isset($this->error)) {
-                require_once 'PEAR.php';
-                return PEAR::raiseError($this->error);
+                throw new Mail2_Exception($this->error);
             }
 
             if (!$this->nestGroups) {

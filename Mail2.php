@@ -78,9 +78,9 @@ class Mail2
         if (class_exists($class)) {
             $mailer = new $class($params);
             return $mailer;
-        } else {
-            return PEAR::raiseError('Unable to find class for driver ' . $driver);
         }
+
+        throw new Mail2_Exception('Unable to find class for driver ' . $driver);
     }
 
     /**

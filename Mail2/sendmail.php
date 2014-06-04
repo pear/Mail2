@@ -102,7 +102,7 @@ class Mail2_sendmail extends Mail2 {
     public function send($recipients, $headers, $body)
     {
         if (!is_array($headers)) {
-            return PEAR::raiseError('$headers must be an array');
+            throw new InvalidArgumentException('$headers must be an array');
         }
 
         $result = $this->_sanitizeHeaders($headers);
@@ -130,19 +130,19 @@ class Mail2_sendmail extends Mail2 {
         }
 
         if (!isset($from)) {
-            return PEAR::raiseError('No from address given.');
+            throw new InvalidArgumentException('No from address given.');
         } elseif (strpos($from, ' ') !== false ||
                   strpos($from, ';') !== false ||
                   strpos($from, '&') !== false ||
                   strpos($from, '`') !== false) {
-            return PEAR::raiseError('From address specified with dangerous characters.');
+            throw new InvalidArgumentException('From address specified with dangerous characters.');
         }
 
         $from = escapeshellarg($from); // Security bug #16200
 
         $mail = @popen($this->sendmail_path . (!empty($this->sendmail_args) ? ' ' . $this->sendmail_args : '') . " -f$from -- $recipients", 'w');
         if (!$mail) {
-            return PEAR::raiseError('Failed to open sendmail [' . $this->sendmail_path . '] for execution.');
+            throw new Mail2_Exception('Failed to open sendmail [' . $this->sendmail_path . '] for execution.');
         }
 
         // Write the headers following by two newlines: one to end the headers
@@ -158,7 +158,7 @@ class Mail2_sendmail extends Mail2 {
         }
 
         if ($result != 0) {
-            return PEAR::raiseError('sendmail returned error code ' . $result,
+            throw new Mail2_Exception('sendmail returned error code ' . $result,
                                     $result);
         }
 
