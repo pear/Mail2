@@ -5,6 +5,12 @@
  <summary>Class that provides multiple interfaces for sending emails</summary>
  <description>PEAR&apos;s Mail package defines an interface for implementing mailers under the PEAR hierarchy.  It also provides supporting functions useful to multiple mailer backends.  Currently supported backends include: PHP&apos;s native mail() function, sendmail, and SMTP.  This package also provides a RFC822 email address list validation utility class.</description>
  <lead>
+  <name>Daniel O'Coonnor</name>
+  <user>doconnor</user>
+  <email>clockwerx@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
   <name>Chuck Hagenbuch</name>
   <user>chagenbu</user>
   <email>chuck@horde.org</email>
@@ -22,11 +28,11 @@
   <email>alec@alec.pl</email>
   <active>yes</active>
  </developer>
- <date>2014-06-04</date>
- <time>14:36:43</time>
+ <date>2014-06-22</date>
+ <time>16:07:28</time>
  <version>
-  <release>2.0.0</release>
-  <api>2.0.0</api>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -34,13 +40,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-Request #17888: Reduce peak memory usage when using the smtp/smtpmx backend [alec]
-
-Fixed Bug #18109: New &quot;pipelining&quot; parameter for SMTP backend never used [alec]
-Fixed Bug #17317: Invalid periods in mailbox not marked as invalid [alec]
-Fixed Bug #17388: Deprecated assigning the return value of new by reference [alec]
-Fixed Bug #17866: Non-static method Mail_RFC822::parseAddressList called statically [alec]
-Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-group syntax [alec]
+Fork from Mail to create PHP5+ friendly version
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -50,21 +50,19 @@ Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-
    <file baseinstalldir="/" md5sum="c72d8def09a28224d99eed3711b661b8" name="Mail2/null.php" role="php" />
    <file baseinstalldir="/" md5sum="327996bd787dc0f35b01cfdc4af24fe0" name="Mail2/RFC822.php" role="php" />
    <file baseinstalldir="/" md5sum="9fa058422a6f4299aabc299f1df2976d" name="Mail2/sendmail.php" role="php" />
-   <file baseinstalldir="/" md5sum="fd11ec4fe7ff23117de81e2a8a60daca" name="Mail2/smtp.php" role="php" />
-   <file baseinstalldir="/" md5sum="eec557ab972dd935de4281db5ae9a7fb" name="Mail2/smtpmx.php" role="php" />
+   <file baseinstalldir="/" md5sum="2eba49974f28d52a80594dc44fd03844" name="Mail2/smtp.php" role="php" />
+   <file baseinstalldir="/" md5sum="a9e29bdf50fd5e2e8040c2444a8855f4" name="Mail2/smtpmx.php" role="php" />
    <file baseinstalldir="/" md5sum="f04b9e25d197c4228914ad9f77e1520a" name="tests/9137.phpt" role="test" />
    <file baseinstalldir="/" md5sum="acc4709b7656c6f7f4b08bf287d7c892" name="tests/9137_2.phpt" role="test" />
    <file baseinstalldir="/" md5sum="b16f9dd2f8a864da3d27ae35307080ce" name="tests/13659.phpt" role="test" />
    <file baseinstalldir="/" md5sum="9fa2291d120e4c5a3d707039b26bedc9" name="tests/bug17178.phpt" role="test" />
    <file baseinstalldir="/" md5sum="f441364f32afbbbae78aa2441c45e8f2" name="tests/bug17317.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="1be50d9c160c94ef17910f5153c2bd50" name="tests/bug20281.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e89fea7fb0abbe9a583960c6e0b304c3" name="tests/bug20281.phpt" role="test" />
    <file baseinstalldir="/" md5sum="09f4ca2e0c846e93fa2f242c0c4b2c63" name="tests/Makefile" role="test" />
    <file baseinstalldir="/" md5sum="47d7fd802d2e8f5e4164b44489376ec8" name="tests/rfc822.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="85c0f8738371a3e4e2187426a6251f0d" name="tests/smtp_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e52b73567840e139247082aa62c2b98f" name="tests/smtp_error.phpt" role="test" />
    <file baseinstalldir="/" md5sum="a62b3c8e4e201507a769cc066ab16777" name="tests/validateQuotedString.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="5ce343f5d6a6d15dd9134f61c188e053" name="composer.json" role="data" />
-   <file baseinstalldir="/" md5sum="6525e2036c9a4b1ac211cbd1b3c51fec" name="Mail2.php" role="php" />
-   <file baseinstalldir="/" md5sum="1bb5fa31c533692462a0307112231ac9" name="README.md" role="data" />
+   <file baseinstalldir="/" md5sum="7ac19974a61685781bfa9e26469b42b8" name="Mail2.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -87,8 +85,8 @@ Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-
  <changelog>
   <release>
    <version>
-    <release>2.0.0</release>
-    <api>2.0.0</api>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
    </version>
    <stability>
     <release>beta</release>
