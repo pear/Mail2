@@ -17,9 +17,12 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Mail2": "./"
-        }
+        "classmap": [
+            "Mail2.php", "Mail2"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [ "tests" ]
     },
     "description": "More info available on: http://pear.php.net/package/Mail2",
     "include-path": [
