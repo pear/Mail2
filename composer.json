@@ -32,9 +32,6 @@
         "source": "https://github.com/pear/Mail2"
     },
     "type": "library",
-    "require": {
-        "pear/pear": "*"
-    },
     "require-dev": {
         "phpunit/phpunit": "*"
     },
