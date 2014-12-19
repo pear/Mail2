@@ -131,7 +131,7 @@ class Mail2
         }
 
         // flatten the headers out.
-        list(, $text_headers) = Mail::prepareHeaders($headers);
+        list(, $text_headers) = Mail2::prepareHeaders($headers);
 
         return mail($recipients, $subject, $body, $text_headers);
     }
