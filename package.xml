@@ -44,34 +44,34 @@ Fork from Mail to create PHP5+ friendly version
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="8f63baa4c55c5f227ebac0f904ba696a" name="Mail2/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="8a80405941904c9a3e03b74750373d50" name="Mail2/mail.php" role="php" />
-   <file baseinstalldir="/" md5sum="527045bb14994550a55b4c881e95460e" name="Mail2/mock.php" role="php" />
-   <file baseinstalldir="/" md5sum="c72d8def09a28224d99eed3711b661b8" name="Mail2/null.php" role="php" />
-   <file baseinstalldir="/" md5sum="327996bd787dc0f35b01cfdc4af24fe0" name="Mail2/RFC822.php" role="php" />
-   <file baseinstalldir="/" md5sum="9fa058422a6f4299aabc299f1df2976d" name="Mail2/sendmail.php" role="php" />
-   <file baseinstalldir="/" md5sum="2eba49974f28d52a80594dc44fd03844" name="Mail2/smtp.php" role="php" />
-   <file baseinstalldir="/" md5sum="a9e29bdf50fd5e2e8040c2444a8855f4" name="Mail2/smtpmx.php" role="php" />
-   <file baseinstalldir="/" md5sum="f04b9e25d197c4228914ad9f77e1520a" name="tests/9137.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="acc4709b7656c6f7f4b08bf287d7c892" name="tests/9137_2.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="b16f9dd2f8a864da3d27ae35307080ce" name="tests/13659.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="9fa2291d120e4c5a3d707039b26bedc9" name="tests/bug17178.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="f441364f32afbbbae78aa2441c45e8f2" name="tests/bug17317.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="e89fea7fb0abbe9a583960c6e0b304c3" name="tests/bug20281.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="09f4ca2e0c846e93fa2f242c0c4b2c63" name="tests/Makefile" role="test" />
-   <file baseinstalldir="/" md5sum="47d7fd802d2e8f5e4164b44489376ec8" name="tests/rfc822.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="e52b73567840e139247082aa62c2b98f" name="tests/smtp_error.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="a62b3c8e4e201507a769cc066ab16777" name="tests/validateQuotedString.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="7ac19974a61685781bfa9e26469b42b8" name="Mail2.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/Exception.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/mail.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/mock.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/null.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/RFC822.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/sendmail.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/smtp.php" role="php" />
+   <file baseinstalldir="/" name="Mail2/smtpmx.php" role="php" />
+   <file baseinstalldir="/" name="tests/9137.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/9137_2.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/13659.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/bug17178.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/bug17317.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/bug20281.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/Makefile" role="test" />
+   <file baseinstalldir="/" name="tests/rfc822.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/smtp_error.phpt" role="test" />
+   <file baseinstalldir="/" name="tests/validateQuotedString.phpt" role="test" />
+   <file baseinstalldir="/" name="Mail2.php" role="php" />
   </dir>
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>5.0.0</min>
+    <min>5.4.0</min>
    </php>
    <pearinstaller>
-    <min>1.5.6</min>
+    <min>1.10.0</min>
    </pearinstaller>
   </required>
   <optional>
