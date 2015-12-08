@@ -28,10 +28,10 @@
   <email>alec@alec.pl</email>
   <active>yes</active>
  </developer>
- <date>2014-06-22</date>
- <time>16:07:28</time>
+ <date>2015-12-08</date>
+ <time>20:22:28</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.1.1</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -40,7 +40,8 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-Fork from Mail to create PHP5+ friendly version
+  QA release
+  - Fix bug #20439: Incorrect include path for RFC822
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -83,6 +84,24 @@ Fork from Mail to create PHP5+ friendly version
  </dependencies>
  <phprelease />
  <changelog>
+
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2015-12-08</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+    QA release
+    - Fix bug #20439: Incorrect include path for RFC822
+   </notes>
+  </release>
+
   <release>
    <version>
     <release>0.1.0</release>
@@ -104,5 +123,6 @@ Fixed Bug #17866: Non-static method Mail_RFC822::parseAddressList called statica
 Fixed Bug #17178: Mail_RFC822::parseAddressList does not accept RFC-valid empty-group syntax [alec]
    </notes>
   </release>
+
  </changelog>
 </package>
